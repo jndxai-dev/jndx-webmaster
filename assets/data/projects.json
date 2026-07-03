@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1,
+    "title": "Project Alpha",
+    "description": "A full-stack web application built with React and Node.js that demonstrates real-time data processing and elegant UI design.",
+    "tags": ["React", "Node.js", "MongoDB", "WebSocket"],
+    "image": "https://placehold.co/600x400/1a1a2e/e94560?text=Alpha",
+    "liveUrl": "https://example.com/alpha",
+    "repoUrl": "https://github.com/username/project-alpha",
+    "featured": true
+  },
+  {
+    "id": 2,
+    "title": "Project Beta",
+    "description": "Mobile-first responsive dashboard for analytics with interactive charts, dark mode, and export capabilities.",
+    "tags": ["TypeScript", "Next.js", "D3.js", "Tailwind"],
+    "image": "https://placehold.co/600x400/16213e/0f3460?text=Beta",
+    "liveUrl": "https://example.com/beta",
+    "repoUrl": "https://github.com/username/project-beta",
+    "featured": true
+  },
+  {
+    "id": 3,
+    "title": "Project Gamma",
+    "description": "CLI tool and companion web app for automating DevOps workflows across multiple cloud providers.",
+    "tags": ["Python", "AWS", "Docker", "CLI"],
+    "image": "https://placehold.co/600x400/0f3460/1a1a2e?text=Gamma",
+    "liveUrl": "https://example.com/gamma",
+    "repoUrl": "https://github.com/username/project-gamma",
+    "featured": true
+  },
+  {
+    "id": 4,
+    "title": "Project Delta",
+    "description": "Open-source library for state management with built-in persistence, time-travel debugging, and dev tools.",
+    "tags": ["JavaScript", "npm", "Documentation"],
+    "image": "https://placehold.co/600x400/533483/e94560?text=Delta",
+    "liveUrl": "https://example.com/delta",
+    "repoUrl": "https://github.com/username/project-delta",
+    "featured": false
+  },
+  {
+    "id": 5,
+    "title": "Project Epsilon",
+    "description": "Real-time collaborative whiteboard with end-to-end encryption, built for remote teams.",
+    "tags": ["WebRTC", "Canvas", "Firebase", "React"],
+    "image": "https://placehold.co/600x400/e94560/1a1a2e?text=Epsilon",
+    "liveUrl": "https://example.com/epsilon",
+    "repoUrl": "https://github.com/username/project-epsilon",
+    "featured": false
+  },
+  {
+    "id": 6,
+    "title": "Project Zeta",
+    "description": "AI-powered code review assistant that integrates with GitHub and provides actionable suggestions.",
+    "tags": ["Python", "Flask", "ML", "GitHub API"],
+    "image": "https://placehold.co/600x400/1a1a2e/533483?text=Zeta",
+    "liveUrl": "https://example.com/zeta",
+    "repoUrl": "https://github.com/username/project-zeta",
+    "featured": false
+  }
+]
