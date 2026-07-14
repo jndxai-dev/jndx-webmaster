@@ -1,6 +1,6 @@
 # Portfolio Website
 
-A modern, responsive portfolio site built with vanilla HTML/CSS/JS, hosted on **GitHub Pages**.
+Official Site Template | JNDX
 
 ## Features
 
