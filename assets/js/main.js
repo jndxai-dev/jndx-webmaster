@@ -275,6 +275,151 @@
     });
   }
 
+  /* ---------- NEURAL NETWORK CANVAS ---------- */
+  function initNeuralCanvas() {
+    const canvas = $('#heroCanvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    let W, H, particles = [], mouse = { x: -9999, y: -9999 };
+    let animId;
+
+    const CFG = {
+      count: 90,
+      maxDist: 160,
+      speed: 0.35,
+      radiusMin: 1,
+      radiusMax: 2.8,
+      lineAlpha: 0.18,
+      particleAlpha: 0.6,
+      mouseRadius: 200,
+      mouseForce: 0.04,
+      hueBase: 80,
+      hueRange: 40,
+    };
+
+    function resize() {
+      const rect = canvas.parentElement.getBoundingClientRect();
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      W = rect.width;
+      H = rect.height;
+      canvas.width = W * dpr;
+      canvas.height = H * dpr;
+      canvas.style.width = W + 'px';
+      canvas.style.height = H + 'px';
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+
+    function createParticles() {
+      particles = [];
+      for (let i = 0; i < CFG.count; i++) {
+        particles.push({
+          x: Math.random() * W,
+          y: Math.random() * H,
+          vx: (Math.random() - 0.5) * CFG.speed * 2,
+          vy: (Math.random() - 0.5) * CFG.speed * 2,
+          r: CFG.radiusMin + Math.random() * (CFG.radiusMax - CFG.radiusMin),
+          hue: CFG.hueBase + Math.random() * CFG.hueRange,
+          pulse: Math.random() * Math.PI * 2,
+        });
+      }
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, W, H);
+      const t = performance.now() * 0.001;
+
+      /* update & draw particles */
+      for (let i = 0; i < particles.length; i++) {
+        const p = particles[i];
+
+        /* mouse repel */
+        const dx = p.x - mouse.x;
+        const dy = p.y - mouse.y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < CFG.mouseRadius && dist > 0) {
+          const force = (CFG.mouseRadius - dist) / CFG.mouseRadius * CFG.mouseForce;
+          p.vx += (dx / dist) * force;
+          p.vy += (dy / dist) * force;
+        }
+
+        /* drift */
+        p.x += p.vx;
+        p.y += p.vy;
+        p.vx *= 0.995;
+        p.vy *= 0.995;
+
+        /* wrap */
+        if (p.x < -10) p.x = W + 10;
+        if (p.x > W + 10) p.x = -10;
+        if (p.y < -10) p.y = H + 10;
+        if (p.y > H + 10) p.y = -10;
+
+        /* pulse */
+        p.pulse += 0.015;
+        const glow = 0.7 + Math.sin(p.pulse) * 0.3;
+
+        /* draw particle */
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r * glow, 0, Math.PI * 2);
+        ctx.fillStyle = `hsla(${p.hue}, 80%, 70%, ${CFG.particleAlpha * glow})`;
+        ctx.fill();
+
+        /* connections */
+        for (let j = i + 1; j < particles.length; j++) {
+          const q = particles[j];
+          const ddx = p.x - q.x;
+          const ddy = p.y - q.y;
+          const dd = Math.sqrt(ddx * ddx + ddy * ddy);
+          if (dd < CFG.maxDist) {
+            const alpha = (1 - dd / CFG.maxDist) * CFG.lineAlpha;
+            ctx.beginPath();
+            ctx.moveTo(p.x, p.y);
+            ctx.lineTo(q.x, q.y);
+            ctx.strokeStyle = `hsla(${(p.hue + q.hue) / 2}, 70%, 65%, ${alpha})`;
+            ctx.lineWidth = 0.6;
+            ctx.stroke();
+          }
+        }
+      }
+
+      /* mouse glow */
+      if (mouse.x > 0) {
+        const grad = ctx.createRadialGradient(mouse.x, mouse.y, 0, mouse.x, mouse.y, CFG.mouseRadius);
+        grad.addColorStop(0, `hsla(${CFG.hueBase + CFG.hueRange / 2}, 80%, 70%, 0.06)`);
+        grad.addColorStop(1, 'transparent');
+        ctx.fillStyle = grad;
+        ctx.fillRect(mouse.x - CFG.mouseRadius, mouse.y - CFG.mouseRadius, CFG.mouseRadius * 2, CFG.mouseRadius * 2);
+      }
+
+      animId = requestAnimationFrame(draw);
+    }
+
+    /* events */
+    window.addEventListener('resize', () => { resize(); createParticles(); });
+    canvas.parentElement.addEventListener('mousemove', (e) => {
+      const rect = canvas.parentElement.getBoundingClientRect();
+      mouse.x = e.clientX - rect.left;
+      mouse.y = e.clientY - rect.top;
+    });
+    canvas.parentElement.addEventListener('mouseleave', () => {
+      mouse.x = -9999;
+      mouse.y = -9999;
+    });
+
+    /* pause when not visible */
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        cancelAnimationFrame(animId);
+      } else {
+        draw();
+      }
+    });
+
+    resize();
+    createParticles();
+    draw();
+  }
+
   /* ---------- INIT ---------- */
   initLoader();
   initTheme();
@@ -285,5 +430,6 @@
   initProjects();
   initContactForm();
   initBackToTop();
+  initNeuralCanvas();
 
 })();
