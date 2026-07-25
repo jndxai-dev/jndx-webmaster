@@ -3,7 +3,7 @@
     "title": "JNDX Portfolio",
     "description": "A dynamic, themeable portfolio website with dark mode, project filtering, and smooth animations.",
     "image": "",
-    "tags": ["React", "JavaScript"],
+    "tags": ["TypeScript", "React"],
     "github": "https://github.com/jndxai-dev/jndx-webmaster",
     "live": "https://jndxai-dev.github.io/jndx-webmaster/"
   },
@@ -17,34 +17,34 @@
   },
   {
     "title": "Real-time Chat App",
-    "description": "Full-stack real-time messaging application with WebSocket support, user auth, and media sharing.",
+    "description": "WebSocket-powered multi-room chat with typing indicators, user presence, message history, and responsive dark UI.",
     "image": "",
     "tags": ["TypeScript", "React"],
-    "github": "https://github.com/jndxai-dev",
+    "github": "https://github.com/jndxai-dev/realtime-chat-app",
     "live": ""
   },
   {
     "title": "ML Data Pipeline",
-    "description": "End-to-end machine learning data pipeline for ingestion, transformation, and model training at scale.",
+    "description": "DAG-based ML data pipeline engine with parallel execution, transforms, retry logic, and a rich CLI interface.",
     "image": "",
     "tags": ["Python", "AI"],
-    "github": "https://github.com/jndxai-dev",
+    "github": "https://github.com/jndxai-dev/ml-data-pipeline",
     "live": ""
   },
   {
     "title": "Smart Dashboard",
-    "description": "Analytics dashboard with real-time data visualization, custom widgets, and exportable reports.",
+    "description": "Pure HTML/CSS/JS analytics dashboard with canvas-rendered charts, dark/light themes, live data updates, and CSV export.",
     "image": "",
     "tags": ["TypeScript", "React"],
-    "github": "https://github.com/jndxai-dev",
+    "github": "https://github.com/jndxai-dev/smart-dashboard",
     "live": ""
   },
   {
-    "title": "CLI Productivity Tool",
-    "description": "Command-line utility for managing tasks, notes, and project scaffolding with plugin support.",
+    "title": "Clipper",
+    "description": "CLI productivity tool for managing notes, bookmarks, and code snippets with full-text search and rich terminal UI.",
     "image": "",
     "tags": ["Python", "Node.js"],
-    "github": "https://github.com/jndxai-dev",
+    "github": "https://github.com/jndxai-dev/clipper",
     "live": ""
   }
 ]
