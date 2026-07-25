@@ -7,7 +7,7 @@
 
   /* ---------- CONFIG ---------- */
   const CONFIG = {
-    typingWords: ['AI Systems', 'Web Apps', 'Smart Tools', 'Clean UI', 'Automation', 'Open Source'],
+    typingWords: ['AI Architectures', 'Agentic Systems', 'LLM Pipelines', 'MLOps', 'Intelligent Apps', 'AI Strategy'],
     typingSpeed: 100,
     typingDeleteSpeed: 60,
     typingPause: 2000,
