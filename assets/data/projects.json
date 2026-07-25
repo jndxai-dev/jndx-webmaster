@@ -8,11 +8,11 @@
     "live": "https://jndxai-dev.github.io/jndx-webmaster/"
   },
   {
-    "title": "AI Task Automation",
-    "description": "Intelligent task automation system powered by AI agents that streamline workflows and boost productivity.",
+    "title": "TaskForge AI",
+    "description": "AI-powered task automation system with NLP parsing, smart prioritization, auto-categorization, and rule-based automation engine.",
     "image": "",
     "tags": ["Python", "AI"],
-    "github": "https://github.com/jndxai-dev",
+    "github": "https://github.com/jndxai-dev/ai-task-automation",
     "live": ""
   },
   {
